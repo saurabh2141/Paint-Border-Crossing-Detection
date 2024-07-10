@@ -1,0 +1,40 @@
+Introduction:
+This script analyzes the image captured by apint dispensing system to determine if the paint has crossed the designated boundry. Here I have used jupyter notebook as IDE. The OpenCV which I am using dosen't have GUI support built in hence I am using matplotlib to display the image instead.
+
+Step 1: 
+Import necessary libraries 
+cv2 for image processing
+matplotlib.pyplot for visualization
+numpy for array processing
+
+Step 2:
+Read the input image, load it and display the shape of the image.
+
+Step 3:
+slice the above jpg file to display only the bottom left blue rectangular box and display the shape of the sliced image.
+
+Step 4:
+Define the rectangular boundry.
+convert the image to HSV (Hue, Saturation, Value) color space for better color segmentation.
+defining blue color range
+lower blue array[100,150,0]: defines the lower bound of blue color in HSV space where 100 is the lower bound hue component, 150 is lower bound for saturation component and 0 is the lower bound for value component.
+upper blue array[140,255,255]: defines the upper bound of blue color in HSV space where 100 is the upper bound hue component, 150 is upper bound for saturation component and 0 is the upper bound for value component.
+
+Step 5:
+Create a mask for blue color.
+mask = cv2.inRange(hsv_image, lower_blue, upper_blue)
+this generates a binary mask where pixels within the blue color range are set to white(255) and all the other pixels are set to black(0).
+convert the mask for display.
+
+Step 6:
+Copy the mask in new variable, set the area inside the rectangle to 0 and check for blue pixels outside the boundry.
+
+Step 7:
+Display the outside boundry using matplotlib highlighting the regions outside the boundry. In this you can clearly see if there are any blue pxiels outside the boundry, which helps in the analysis and detection of paint border crossing.
+
+Conditions:
+1.Ensure you have the required libraries - OpenCV, numpy and matplotlib
+2.Place the script and image in same directory.
+
+
+
